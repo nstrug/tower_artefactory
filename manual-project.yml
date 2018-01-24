@@ -9,10 +9,16 @@
       unarchive:
         src: "{{ artefact_url }}"
         dest: "{{ project_dir }}"
-        mode: "{{ awx_user }}"
+        owner: "{{ awx_user }}"
         group: "{{ awx_group }}"
         list_files: True
         remote_src: yes
       register: file_list
-    - debug:
-      msg: "{{ file_list }}"
+    - name: Run Ansible Galaxy
+      command: >-
+        {{ galaxy }} -p {{ project_dir }}/{{ file_list.files[0] }}/roles
+        install -r {{ project_dir}}/{{ file_list.files[0] }}/roles/requirements.yml
+        --force
+      
+
+
