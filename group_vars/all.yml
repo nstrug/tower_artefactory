@@ -1,6 +1,6 @@
 ---
 
 project_dir: "/var/lib/awx/projects"
-awx_user: nstrug
-awx_group: nstrug
+awx_user: awx
+awx_group: awx
 galaxy: /usr/bin/ansible-galaxy
