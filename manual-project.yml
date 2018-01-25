@@ -16,9 +16,9 @@
       register: file_list
     - name: Run Ansible Galaxy
       command: >-
-        {{ galaxy }} -p {{ project_dir }}/{{ file_list.files[0] }}/roles
-        install -r {{ project_dir}}/{{ file_list.files[0] }}/roles/requirements.yml
+        {{ galaxy }} -p {{ project_dir }}/{{ file_list.files[1] }}/roles
+        install -r {{ project_dir}}/{{ file_list.files[1] }}/roles/requirements.yml
         --force
-      
+
 
 
