@@ -14,11 +14,14 @@
         list_files: True
         remote_src: yes
       register: file_list
+    - name: Save role location
+      set_fact:
+        role_dir: "{{ project_dir }}/{{ file_list.file[0] | dirname }}/roles"
+
     - name: Run Ansible Galaxy
       command: >-
-        {{ galaxy }} -p {{ project_dir }}/{{ file_list.files[1] }}/roles
-        install -r {{ project_dir}}/{{ file_list.files[1] }}/roles/requirements.yml
-        --force
+        {{ galaxy }} -p {{ role_dir }}
+        install -r {{ role_dir }}/requirements.yml --force
 
 
 
