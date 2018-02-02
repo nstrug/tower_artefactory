@@ -5,9 +5,9 @@
   gather_facts: False
   become: yes
   tasks:
-    - name: Download and unpack artefact
+    - name: Download and unpack artifact
       unarchive:
-        src: "{{ artefact_url }}"
+        src: "{{ artifact_url }}"
         dest: "{{ project_dir }}"
         owner: "{{ awx_user }}"
         group: "{{ awx_group }}"
